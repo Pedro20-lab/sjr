@@ -79,6 +79,10 @@ class GuestController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $guest = Guest::find($id);
+        $guest->delete();
+
+        return redirect()->route('guest.index');
+
     }
 }

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('origin_guest');
             $table->string('phone_guest');
             $table->timestamps();
+
+            $table->softDeletes();
+
         });
     }
 
