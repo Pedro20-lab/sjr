@@ -8,7 +8,8 @@ use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('layouts.app');
+//    return view('layouts.app');
+    return view('welcome');
 });
 
 Route::resource('guest', GuestController::class);

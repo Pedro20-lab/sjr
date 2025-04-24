@@ -1,3 +1,63 @@
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8fafc;
+    }
+
+    header {
+        background-color: #1a202c;
+        color: white;
+        padding: 1rem 2rem;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #63b3ed;
+    }
+
+    .material-symbols-outlined {
+        vertical-align: middle;
+        margin-left: 0.5rem;
+    }
+
+    .bg-gray-100 {
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+    }
+
+    .grow-1 {
+        flex: 1;
+        max-width: 20%;
+        background-color: #edf2f7;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .grow-2 {
+        flex: 2;
+        background-color: #ffffff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    main {
+        margin-top: 1rem;
+    }
+
+    label {
+        font-size: 1rem;
+        margin-right: 0.5rem;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>

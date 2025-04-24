@@ -7,6 +7,16 @@
     <title>Inicio</title>
 </head>
 <body>
-    <a>hola</a>
+{{$width = '4px'}}
+<x-modal :variable="$width">
+    <x-slot:title>
+        <h2>Holaaaaa</h2>
+    </x-slot:title>
+    <p>The password you have provided is not valid.
+        Here are the rules for valid passwords: [...]</p>
+    <p><a href="#">...</a></p>
+</x-modal>
+
+<a>otra cosa</a>
 </body>
 </html>
