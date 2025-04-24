@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --dark-blue: #2d6d97;  
+    --white: #e1edf6;  
+}
+
+img {
+    width: 4em;
+    height: 4em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Montserrat', 'Inter';
+}
+
+.header {
+    width: 100%;   
+    padding: 0.5em;
+
+    background-color: var(--dark-blue);
+    color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;    
+    margin: 0 auto;
+    background-color: var(--dark-blue);
+}
+
+.nav__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav--vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1em;
+
+    
+}
+
+.main {
+    display: flex;
+    gap: 2em;
+    padding: 2em 1em;
+}
+
+.side__bar {
+    flex: 0.5;
+
+    background-color: var(--white);
+    border: #2d6d97 1px solid;
+    border-radius: 5px;    
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.main__content {
+    flex: 4;    
+}
