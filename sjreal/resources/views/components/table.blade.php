@@ -23,12 +23,17 @@
                         </a>
                     </td>
                     <td class="td">
-                        <a href="{{ route($route.'.destroy', [$route => $object->id]) }}" class="nav__item">
+                        <form action="{{ route($route.'.destroy', [$route => $object->id]) }}" method="POST">
+                            @csrf 
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar">
+                        </form>
+                        {{-- <a href="{{ route($route.'.destroy', [$route => $object->id]) }}" class="nav__item">
                             <label for=""></label>
                             <span class="material-symbols-outlined">
                                 delete
                             </span>
-                        </a>
+                        </a> --}}
                     </td>
                 </tr>
             @endforeach

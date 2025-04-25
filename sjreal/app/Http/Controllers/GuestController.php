@@ -45,21 +45,33 @@ class GuestController extends Controller
     }
 
     /**
+     * Show the form for searching a resource.
+     */
+    public function search() {
+        $num_doc_guest = \request('num_doc_guest');        
+
+        $guest = Guest::where('num_doc_guest', $num_doc_guest)->get();
+        
+        return redirect()->route('guest.show', ['id' => $guest]);
+    }
+
+    /**
      * Display the specified resource.
      */
-    public function show(string $id = null)
-    {
-        $id = \request()->only(['num_doc_guest']);
-        $guest = Guest::where('num_doc_guest', $id)->first();
+    public function show(string $id)
+    {        
+        $num_doc_guest = \request('num_doc_guest'); 
+        $guest = Guest::where('num_doc_guest', $num_doc_guest)->get();
+        // $guest = Guest::where('num_doc_guest', '777825283')->get();
         return view('guest.show')->with('guest', $guest);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $num_doc_guest)
     {
-        $guest = Guest::where('id', $id)->first();
+        $guest = Guest::where('id', $num_doc_guest)->first();
         return view('guest.edit')->with('guest', $guest);
     }
 
@@ -70,8 +82,8 @@ class GuestController extends Controller
     {
         $guest = Guest::where('id', $id)->first();
         $values = \request()->only(['name_guest', 'lastname_guest', 'doc_guest', 'num_doc_guest', 'origin_guest', 'phone_guest']);
-        $guest->update($values);
-        redirect()->route('guest.index', ['guests' => Guest::all()]);
+        $guest->update($values);        
+        return redirect()->route('guest.index');
     }
 
     /**

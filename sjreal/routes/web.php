@@ -18,3 +18,5 @@ Route::resource('parking', ParkingController::class);
 Route::resource('stock', StockController::class);
 Route::resource('lodgement', LodgementController::class);
 
+
+Route::get('guest/search', [GuestController::class, 'search'])->name('guest.search');
