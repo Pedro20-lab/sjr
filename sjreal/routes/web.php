@@ -8,8 +8,9 @@ use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('layouts.app');
-});
+//    return view('layouts.app');
+    return view('welcome');
+})->name('home');
 
 Route::resource('guest', GuestController::class);
 Route::resource('employee', EmployeeController::class);
@@ -17,3 +18,5 @@ Route::resource('parking', ParkingController::class);
 Route::resource('stock', StockController::class);
 Route::resource('lodgement', LodgementController::class);
 
+
+Route::get('guest/search', [GuestController::class, 'search'])->name('guest.search');
