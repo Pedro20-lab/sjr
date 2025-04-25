@@ -12,7 +12,11 @@ class Table extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public array $headers = [], public Collection $rows, public array $properties = [])
+    public function __construct(
+        public array $headers = [], 
+        public Collection $rows, 
+        public array $properties = [],
+        public string $route = '',)
     {
         //
     }

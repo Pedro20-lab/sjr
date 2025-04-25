@@ -51,7 +51,6 @@ a {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1em;
-
     
 }
 
@@ -72,4 +71,18 @@ a {
 
 .main__content {
     flex: 4;    
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.thead {
+    border: #8b979e 1px solid;
+    padding: 0.5em 0.3em;
+}
+
+.td {
+    border-bottom: #8b979e 1px solid;
+    padding: 0.5em 0.3em;
 }

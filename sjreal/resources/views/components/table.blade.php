@@ -1,19 +1,35 @@
 
 <div class="overflow-x-auto">
-    <table class="table-auto border-collapse border border-gray-300 w-full text-sm text-left text-gray-700">
-        <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+    <table class="table">
+        <thead >
             <tr>
                 @foreach ($headers as $header)
-                    <th class="border border-gray-300 px-4 py-2">{{ $header }}</th>
+                    <th class="thead">{{ $header }}</th>
                 @endforeach
             </tr>
         </thead>
         <tbody>
             @foreach ($rows as $object)
-                <tr class="hover:bg-gray-50">                
+                <tr class="">                
                     @foreach ($properties as $property)
-                        <td class="border border-gray-300 px-4 py-2">{{ $object->$property }}</td>
+                        <td class="td">{{ $object->$property }}</td>
                     @endforeach                    
+                    <td class="td">
+                        <a href="{{ route($route.'.edit', [$route => $object->id])}} " class="nav__item">
+                            <label for=""></label>
+                            <span class="material-symbols-outlined">
+                                edit
+                            </span>
+                        </a>
+                    </td>
+                    <td class="td">
+                        <a href="{{ route($route.'.destroy', [$route => $object->id]) }}" class="nav__item">
+                            <label for=""></label>
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
