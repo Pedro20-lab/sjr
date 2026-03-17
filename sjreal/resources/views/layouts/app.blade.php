@@ -13,29 +13,40 @@
     </head>
     <body>
         <header class="header">
-            <nav class="nav">
-                <a href="{{route('home')}}" class="nav__item">
-                    <img src="{{ Vite::asset('resources/assets/logo.png')}}" alt="Logo">
-                    <span>Hotel San José</span>
+            <nav class="list">
+                <a href="{{route('login')}}" class="link link--vertical">
+                    <img class="link__icon" src="{{ Vite::asset('resources/assets/logo.png')}}" alt="Logo">
+                    <span class="link__text" >San José Real</span>
                 </a>
-                <a class="nav__item ">
-                    <label for="">Bienvenido Pedro</label>
-                    <span class="material-symbols-outlined">
+
+                <a onclick="toggleMenu()" class="link link--vertical">                    
+                    <span class="material-symbols-outlined link__icon">
                         person
                     </span>
+                    <span class="link__text" for="">Opciones</span>
                 </a>
+                <div id="menu" class="side__bar hidden">
+                    @include('layouts.navigation')
+                </div>
+
             </nav>
         </header>
 
-        <div class="main">
-            <div class="side__bar">
-                @include('layouts.navigation')
-            </div>
-
+        <div class="main">        
             <!-- Page Content -->
             <main class="main__content">
                 @yield('content', 'El contenido debe ir aquí')
             </main>
         </div>
     </body>
+    <script>
+        let options = document.querySelectorAll('.list > .link')[1]
+        
+        function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('hidden');
+        options.classList.toggle('hidden')
+        }
+    </script>
 </html>
+

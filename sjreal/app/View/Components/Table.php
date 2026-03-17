@@ -14,7 +14,7 @@ class Table extends Component
      */
     public function __construct(
         public array $headers = [], 
-        public Collection $rows, 
+        public $rows, 
         public array $properties = [],
         public string $route = '',)
     {

@@ -1,14 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Montserrat', 'Inter', 'sans-serif';
+}
+
 :root {
-    --dark-blue: #2d6d97;  
-    --white: #e1edf6;  
+    --dark-blue: #2d6d97;
+    --white: #e1edf6;
+    --blue: #4291c6;
+}
+
+body {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+form {
+    width: 100%;
 }
 
 img {
-    width: 4em;
-    height: 4em;
+    width: 1.5em;
 }
 
 a {
@@ -16,80 +39,161 @@ a {
     color: inherit;
 }
 
-*::before,
-*::after,
-* {
-    box-sizing: border-box;
-    margin: 0;
-    font-family: 'Montserrat', 'Inter';
-}
-
-.header {
-    width: 100%;   
-    padding: 0.5em;
-
-    background-color: var(--dark-blue);
-    color: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;    
-    margin: 0 auto;
-    background-color: var(--dark-blue);
-}
-
-.nav__item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.nav--vertical {
+/* Revisar esto para rehacerlo de acuerdo a BEM*/
+.main {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 1em;
-    
-}
-
-.main {
-    display: flex;
     gap: 2em;
     padding: 2em 1em;
 }
 
 .side__bar {
     flex: 0.5;
-
     background-color: var(--white);
     border: #2d6d97 1px solid;
-    border-radius: 5px;    
+    border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.main__content {
-    flex: 4;    
+.form {
+    display: flex;
+    gap: 1em;
+    border-color: #2d6d97;
 }
 
-.table {
-    border-collapse: collapse;
+.list {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3em;
 }
 
-.thead {
-    border: #8b979e 1px solid;
-    padding: 0.5em 0.3em;
+.field {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+    margin: .5em;
 }
 
-.td {
-    border-bottom: #8b979e 1px solid;
-    padding: 0.5em 0.3em;
+.field__label {
+    font-weight: 400;
+    font-family: 'Inter', 'sans-serif';
 }
 
-.search-button {
+.field__input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 0 0 30px;
+}
+
+.submit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;    
-    margin: 0.5em 0;
+    gap: 0.5rem;
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5em auto;
+}
+
+/* Modificadores */
+.field__label--alert {
+    color: red;
+}
+
+.field__input--alert {
+    border-color: red;
+}
+
+.field__label--confirm {
+    color: var(--blue);
+}
+
+.field__input--alert {
+    border-color: var(--blue);
+}
+
+@media (max-width: 900px) {
+
+    .form--vertical {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .list--vertical {
+        width: 75%;
+        flex-direction: column;
+    }
+
+    .link--vertical {
+        flex-direction: column;
+    }
+
+    .field--vertical {
+        flex-direction: column;
+    }
+
+    .room {
+        display: flex;
+        gap: 0.4em;
+        border: 1px solid #ddd;
+        margin: 1em;
+        padding: .5em;
+        border-radius: 8px;
+    }
+
+    .room__info {
+        flex: 0 0 50%;
+        display: flex;
+        flex-direction: column;
+        padding: .5em;
+    }
+
+    .room__info > * {
+        margin-bottom: 0.5em;
+    }
+
+    .room__image {
+        object-fit: cover;
+        flex: 0 0 50%;
+    }
+
+    .room__button {     
+        text-align: center;   
+        padding: 1em;
+        background-color: var(--dark-blue);
+        color: #fff;
+        border-radius: 6px;        
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .room__status {
+        font-weight: 600;
+    }
+
+    .room__status--available {
+        color: green;
+    }
+
+    .room__status--occupied {
+        color: red;
+    }
+
+}
+
+.hidden {
+    display: none;
+}
+
+
+
