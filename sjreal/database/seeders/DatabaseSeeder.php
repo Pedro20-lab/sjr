@@ -10,6 +10,7 @@ use App\Models\Habitacion;
 use App\Models\Hospedaje;
 use App\Models\Huesped;
 use App\Models\Pago;
+use App\Models\User;
 use Database\Factories\PagoFactory;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {   
+        User::factory(5)->create();
         Empleado::factory(5)->create();
 
         //Huespedes mayores de edad y menores de edad

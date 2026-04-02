@@ -13,6 +13,12 @@ class SpaAuthController extends Controller
 {
     public function login(Request $request): JsonResponse
     {
+        if (Auth::check()) {
+        return response()->json([
+            'message' => 'Ya iniciaste sesion',
+            'user' => $request->user(),
+        ]);
+    }
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'string'],

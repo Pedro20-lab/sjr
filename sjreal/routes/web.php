@@ -9,13 +9,6 @@ use App\Http\Controllers\ControladorPrueba;
 use App\Http\Controllers\ControladorHospedaje;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/login', [SpaAuthController::class, 'login'])->middleware('guest');
-Route::post('/logout', [SpaAuthController::class, 'logout'])->middleware('auth:sanctum');
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
 Route::get('test', [ControladorPrueba::class, 'testFunction']);
 
 Route::get('/', function () {
