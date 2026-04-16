@@ -21,8 +21,9 @@ class EmpleadoFactory extends Factory
             'apellido_empleado' => $this->faker->lastName(),
             'tipo_doc_empleado' => $this->faker->randomElement(['CC', 'PSA']),
             'numero_doc_empleado' => $this->faker->unique()->numberBetween(1000000000, 9999999999),
-            'telefono' => $this->faker->phoneNumber(),
+            'telefono_empleado' => $this->faker->phoneNumber(),
             'password_empleado' => bcrypt('password'),
+            'email_empleado' => $this->faker->safeEmail(),
             'rol_empleado' => $this->faker->randomElement(['admin', 'user']),
         ];
     }
