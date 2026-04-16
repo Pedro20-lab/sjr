@@ -14,17 +14,18 @@ class SpaAuthController extends Controller
     public function login(Request $request): JsonResponse
     {
         if (Auth::check()) {
-        return response()->json([
-            'message' => 'Ya iniciaste sesion',
-            'user' => $request->user(),
-        ]);
-    }
+            return response()->json([
+                'message' => 'Ya iniciaste sesion',
+                'user' => $request->user(),
+            ]);
+        }
+
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'string'],
         ]);
 
-        if (! Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (! Auth::attempt(['email_empledo' => $credentials['email'], 'password_empledo' => $credentials['password']], $request->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
@@ -49,4 +50,5 @@ class SpaAuthController extends Controller
             'message' => 'Logged out successfully.',
         ]);
     }
+    
 }
