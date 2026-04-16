@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('numero_doc_empleado', 20);
             $table->string('telefono', 30);
             $table->string('password_empleado', 255);
+            $table->string('email_empleado', 30)->unique();
             $table->string('rol_empleado');
             $table->timestamps();
         });

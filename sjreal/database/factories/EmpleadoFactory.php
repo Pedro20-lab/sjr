@@ -23,6 +23,7 @@ class EmpleadoFactory extends Factory
             'numero_doc_empleado' => $this->faker->unique()->numberBetween(1000000000, 9999999999),
             'telefono' => $this->faker->phoneNumber(),
             'password_empleado' => bcrypt('password'),
+            'email_empleado' => $this->faker->safeEmail(),
             'rol_empleado' => $this->faker->randomElement(['admin', 'user']),
         ];
     }
