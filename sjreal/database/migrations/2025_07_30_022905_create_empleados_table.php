@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-{
+{   
     /**
      * Run the migrations.
      */
@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('tipo_doc_empleado', 10);
             $table->string('numero_doc_empleado', 20);
             $table->string('telefono_empleado', 30);
-            $table->string('password_empleado', 255);
-            $table->string('email_empleado', 30)->unique();
+            $table->string('password', 255);
+            $table->string('email', 30)->unique();
             $table->string('rol_empleado');
             $table->rememberToken();
             $table->timestamps();

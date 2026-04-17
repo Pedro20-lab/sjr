@@ -17,7 +17,7 @@ class Empleado extends Authenticatable
      */
     protected $table = 'empleados';
     protected $primaryKey = 'id_empleado';
-    protected $authPasswordName = 'password_empleado';
+    //protected $authPasswordName = 'password_empleado';
 
     protected $fillable = [
         'nombre_empleado',
@@ -25,18 +25,14 @@ class Empleado extends Authenticatable
         'tipo_doc_empleado',
         'numero_doc_empleado',
         'telefono_empleado',
-        'password_empleado',
-        'email_empleado',
+        'password',
+        'email',
         'rol_empleado',
     ];
 
     /** @use HasFactory<\Database\Factories\EmpleadoFactory> */
     use HasFactory;
     use HasApiTokens;
-
-    public function getAuthIdentifierName() {
-        return 'email_empleado';
-    }
 
     /**
      * Obtiene los hospedajes atendidos por este empleado

@@ -13,6 +13,7 @@ class SpaAuthController extends Controller
 {
     public function login(Request $request): JsonResponse
     {
+        
         if (Auth::check()) {
             return response()->json([
                 'message' => 'Ya iniciaste sesion',
@@ -25,7 +26,7 @@ class SpaAuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (! Auth::attempt(['email_empledo' => $credentials['email'], 'password_empledo' => $credentials['password']], $request->boolean('remember'))) {
+        if (! Auth::attempt($credentials, $request->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
