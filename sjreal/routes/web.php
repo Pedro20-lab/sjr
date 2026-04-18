@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('huesped/crear', [ControladorHuesped::class, 'crear'])->name('huesped.crear');
 Route::post('huesped/guardar', [ControladorHuesped::class, 'guardar'])->name('huesped.guardar');
-Route::get('huesped/{cedula}', [ControladorHuesped::class, 'mostrar'])->name('huesped.mostrar');
+//Route::get('huesped/{cedula}', [ControladorHuesped::class, 'mostrar'])->name('huesped.mostrar');
 Route::get('huespedes', [ControladorHuesped::class, 'mostrar_todos'])->name('huesped.todos');
 
 Route::get('hospedajes', [ControladorHospedaje::class, 'listar_hospedajes'])->name('hospedajes.listar');
