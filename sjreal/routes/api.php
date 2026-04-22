@@ -17,7 +17,7 @@ Route::get('/user', function () {
     return Auth::user();
 })->middleware('auth:sanctum');
 
-Route::get('/huesped/find', [ControladorHuesped::class, 'mostrar'])->name('huesped.mostrar');
+Route::get('/huesped/find', [ControladorHuesped::class, 'mostrar'])->name('huesped.mostrar')->middleware('auth:sanctum');
 
 Route::get('/rooms/available', [RoomController::class, 'queryAvailable'])->name('rooms.available');
 
