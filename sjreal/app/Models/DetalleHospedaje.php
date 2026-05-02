@@ -15,6 +15,11 @@ class DetalleHospedaje extends Model
      * @var string
      */
     protected $table = 'detalle_hospedajes';
+    protected $primaryKey = 'id_detalle_hospedaje';
+    protected $fillable = [
+        'hospedaje_id',
+        'huesped_id',
+    ];
 
     /** @use HasFactory<\Database\Factories\DetalleHospedajeFactory> */
     use HasFactory;
@@ -33,6 +38,10 @@ class DetalleHospedaje extends Model
     public function huesped(): BelongsTo
     {
         return $this->belongsTo(Huesped::class);
+    }
+
+    public static function addGuests($guests) {
+
     }
 
 }

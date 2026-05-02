@@ -17,7 +17,7 @@ class Hospedaje extends Model
      * @var string
      */
     protected $table = 'hospedajes';
-    private $childTypes = ['TI', 'RC'];
+    protected $primaryKey = 'id_hospedaje';
     protected $fillable = [
             'empleado_id',
             'habitacion_id',
@@ -74,6 +74,7 @@ class Hospedaje extends Model
     }
 
     public static function getAmountKids($guests) {
+        //var_dump($guests);
         $amountKids = collect($guests)
             ->filter(fn ($guest) => $guest['isMinor'] == true)
             ->count();
@@ -86,5 +87,7 @@ class Hospedaje extends Model
             ->count();
         return $amountAdults;
     }
+
+    
 
 }
