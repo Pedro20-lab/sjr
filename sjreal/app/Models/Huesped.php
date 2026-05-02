@@ -15,6 +15,16 @@ class Huesped extends Model
      * @var string
      */
     protected $table = 'huespedes';
+    protected $primaryKey = 'id_huesped';
+    protected $fillable = [
+        'num_doc_huesped',
+        'tipo_doc_huesped',
+        'nombre_huesped',
+        'apellido_huesped',
+        'nacionalidad_huesped',
+        'telefono_huesped', 
+        'fecha_nacimiento_huesped'
+    ];
 
     /** @use HasFactory<\Database\Factories\HuespedFactory> */
     use HasFactory;

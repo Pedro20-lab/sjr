@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 use function Symfony\Component\String\s;
 
-Route::post('/login', [SpaAuthController::class, 'login'])->name('login')->middleware(['web','guest']);
+Route::post('/login', [SpaAuthController::class, 'login'])->name('login')->middleware(['guest']);
 Route::post('/logout', [SpaAuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/user', function () {
@@ -19,5 +19,13 @@ Route::get('/user', function () {
 
 Route::get('/huesped/find', [ControladorHuesped::class, 'mostrar'])->name('huesped.mostrar')->middleware('auth:sanctum');
 
-Route::get('/rooms/available', [RoomController::class, 'queryAvailable'])->name('rooms.available');
+Route::get('/home', function (Request $request) {
+    if ($request->session()->exists('users')) {
+        return response()->json(['message' => 'Session exists']);
+    } else {
+        return response()->json(['message' => 'Session does not exist']);
+    }
+});
+
+
 
