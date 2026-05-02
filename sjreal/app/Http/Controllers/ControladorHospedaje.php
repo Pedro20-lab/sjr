@@ -25,20 +25,17 @@ class ControladorHospedaje
             'guests.*.documentType' => ['required', 'string'],
             'guests.*.name' => ['required', 'string'],
             'guests.*.lastname' => ['required', 'string'],
+            'guests.*.isMinor' => ['required'],
         ]);
 
+
+        $cantidadNinos = Hospedaje::getAmountKids($validated['guests']);
+        $cantidadAdultos = Hospedaje::getAmountAdults($validated['guests']);
+        $ingreso = Carbon::parse($validated['check_in']);
+        $salida = Carbon::parse($validated['check_out']);
+
         $result = DB::transaction(function () use ($validated) {
-            $ingreso = Carbon::parse($validated['check_in']);
-            $salida = Carbon::parse($validated['check_out']);
-
-            $childTypes = ['TI', 'RC'];
-
-            $cantidadNinos = collect($validated['guests'])
-                ->filter(fn ($guest) => in_array(strtoupper($guest['documentType']), $childTypes))
-                ->count();
-
-            $cantidadAdultos = count($validated['guests']) - $cantidadNinos;
-
+            
             $hospedaje = Hospedaje::create([
                 'empleado_id' => $validated['empleado_id'],
                 'habitacion_id' => $validated['habitacion_id'],
@@ -62,7 +59,7 @@ class ControladorHospedaje
                         'nacionalidad_huesped' => $guestPayload['nacionality'],
                         'telefono_huesped' => $guestPayload['phoneNumber'],
                         'fecha_nacimiento_huesped' => $guestPayload['birthDate'] ?? null,
-                        ]
+                    ]
                 );
 
                 $detalles[] = DetalleHospedaje::create([

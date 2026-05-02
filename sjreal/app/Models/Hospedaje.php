@@ -17,6 +17,17 @@ class Hospedaje extends Model
      * @var string
      */
     protected $table = 'hospedajes';
+    private $childTypes = ['TI', 'RC'];
+    protected $fillable = [
+            'empleado_id',
+            'habitacion_id',
+            'cantidad_adultos',
+            'cantidad_ninos',
+            'noches_hospedaje',
+            'estado_hospedaje',        
+            'ingreso_hospedaje',
+            'salida_hospedaje',
+    ];
 
     /** @use HasFactory<\Database\Factories\HospedajesFactory> */
     use HasFactory;
@@ -60,6 +71,20 @@ class Hospedaje extends Model
     public function empleado(): BelongsTo
     {
         return $this->belongsTo(Empleado::class, 'empleado_id');
+    }
+
+    public static function getAmountKids($guests) {
+        $amountKids = collect($guests)
+            ->filter(fn ($guest) => $guest['isMinor'] == true)
+            ->count();
+        return $amountKids;
+    }
+
+    public static function getAmountAdults($guests) {
+        $amountAdults = collect($guests)
+            ->filter(fn ($guest) => $guest['isMinor'] == false)
+            ->count();
+        return $amountAdults;
     }
 
 }

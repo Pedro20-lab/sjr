@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\SpaAuthController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ControladorHuesped;
+use App\Http\Controllers\ControladorHospedaje;
 use App\Models\Huesped;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,3 +22,4 @@ Route::get('/huesped/find', [ControladorHuesped::class, 'mostrar'])->name('huesp
 
 Route::get('/rooms/available', [RoomController::class, 'queryAvailable'])->name('rooms.available');
 
+Route::post('/bookings', [ControladorHospedaje::class, 'store'])->name('booking.store')->middleware('auth:sanctum');
