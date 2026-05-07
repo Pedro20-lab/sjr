@@ -61,11 +61,12 @@ Route::middleware('auth')->group(function() {
             $detalles = [];
 
             
-            var_dump($guests);
+            //var_dump($guests);
             foreach ($guests as $guestPayload) {
                 $huesped = Huesped::firstOrCreate(
                     ['num_doc_huesped' => $guestPayload['num_doc_huesped']],
-                    [                                                
+
+                        [                                                
                         'tipo_doc_huesped' => $guestPayload['tipo_doc_huesped'],
                         'nombre_huesped' => $guestPayload['nombre_huesped'],
                         'apellido_huesped' => $guestPayload['apellido_huesped'],
@@ -89,6 +90,12 @@ Route::middleware('auth')->group(function() {
 
         return response()->json($result, 201);
     });
+
+    Route::get('/bookings', function(Request $request) {
+        $hospedajes = Hospedaje::all();
+        return $hospedajes[0];
+    })->name('hospedajes.listar');
+
 });
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
@@ -99,7 +106,7 @@ Route::post('huesped/guardar', [ControladorHuesped::class, 'guardar'])->name('hu
 //Route::get('huesped/{cedula}', [ControladorHuesped::class, 'mostrar'])->name('huesped.mostrar');
 Route::get('huespedes', [ControladorHuesped::class, 'mostrar_todos'])->name('huesped.todos');
 
-Route::get('hospedajes', [ControladorHospedaje::class, 'listar_hospedajes'])->name('hospedajes.listar');
+
 Route::get('hospedajes/crear', [ControladorHospedaje::class, 'crear_hospedaje'])->name('hospedajes.crear');
 
 Route::get('detalle_hospedaje/crear', [App\Http\Controllers\ControladorDetalleHospedaje::class, 'crear_detalle_hospedaje'])->name('detalle_hospedaje.crear');

@@ -76,14 +76,14 @@ class Hospedaje extends Model
     public static function getAmountKids($guests) {
         //var_dump($guests);
         $amountKids = collect($guests)
-            ->filter(fn ($guest) => $guest['isMinor'] == true)
+            ->filter(fn ($guest) => $guest['is_minor'] == true)
             ->count();
         return $amountKids;
     }
 
     public static function getAmountAdults($guests) {
         $amountAdults = collect($guests)
-            ->filter(fn ($guest) => $guest['isMinor'] == false)
+            ->filter(fn ($guest) => $guest['is_minor'] == false)
             ->count();
         return $amountAdults;
     }

@@ -28,6 +28,4 @@ Route::get('/home', function (Request $request) {
     }
 });
 
-
-
 Route::post('/bookings', [ControladorHospedaje::class, 'store'])->name('booking.store')->middleware('auth:sanctum');
