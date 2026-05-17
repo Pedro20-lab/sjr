@@ -12,20 +12,21 @@ use App\Http\Controllers\RoomController;
 use App\Models\DetalleHospedaje;
 use App\Models\Habitacion;
 use App\Models\Hospedaje;
+use App\Models\Pago;
 use App\Models\Huesped;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-Route::get('test', [ControladorPrueba::class, 'testFunction']);
+Route::view('test', 'dashboard');
 
 Route::middleware('auth')->group(function() {
     Route::get('/logout', [LoginController::class, 'logout']);
 
     Route::get('/user', function () {
         return Auth::user();
-    });
+    })->name('user');
 
     Route::get('/rooms/available',[RoomController::class, 'queryAvailable'])->name('rooms.available');
 
@@ -91,14 +92,42 @@ Route::middleware('auth')->group(function() {
         return response()->json($result, 201);
     });
 
-    Route::get('/bookings', function(Request $request) {
+    Route::get('/bookings', function() {
         $hospedajes = Hospedaje::all();
-        return $hospedajes[0];
-    })->name('hospedajes.listar');
+        return view('hospedajes.list', compact('hospedajes'));
+    })->name('booking.list');
+    
+    Route::get('/bookings/filter', function(Request $request) {
+        if ($request->input('parameter') == 'ingreso_hospedaje' || $request->input('parameter') == 'salida_hospedaje') {
+            $date = Carbon::parse($request->input('value'))->toDateString();
+            $hospedajes = Hospedaje::whereDate($request->input('parameter'), $date)->get();
+            return $hospedajes;
+            
+        }
+        $hospedajes = Hospedaje::where($request->input('parameter'),  $request->input('value'))->get();
+        return $hospedajes;
+        
+    })->name('booking.filter');
 
+    Route::get('/inventory', function() {
+        return 'In the works';
+    })->name('inventory.list');
+
+    Route::get('/parking', function() {
+        return 'In the works';
+    })->name('parking.list');
+
+    Route::get('/payments', function() {
+        $payments = Pago::all();
+        //return $payments;
+        return view('payments.list', compact('payments'));
+    })->name('payments.list');
 });
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
+Route::get('/login', function() {
+    return view('login.login_form');
+})->name('login.form')->middleware('guest');
 
 
 Route::get('huesped/crear', [ControladorHuesped::class, 'crear'])->name('huesped.crear');

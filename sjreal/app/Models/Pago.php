@@ -14,7 +14,13 @@ class Pago extends Model
      * @var string
      */
     protected $table = 'pagos';
+    protected $primaryKey = 'id_pago';
 
+    protected $fillable = [
+        'monto_total',
+        'fecha_pago',
+        'cliente_id',
+    ];
     /** @use HasFactory<\Database\Factories\PagoFactory> */
     use HasFactory;
 

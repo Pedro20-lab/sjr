@@ -80,7 +80,7 @@ class ControladorHospedaje
      * Mostrar lista de hospedajes
      */
     public function listar_hospedajes() {
-        $hospedajes = \App\Models\Hospedaje::all();
+        $hospedajes = \App\Models\Hospedaje::all(); 
         return $hospedajes;
     }
 
