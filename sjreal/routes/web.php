@@ -120,7 +120,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/payments', function() {
         $payments = Pago::all();
         //return $payments;
-        return view('payments.list', compact('payments'));
+        return view('payments.list',['payments' => $payments]);
     })->name('payments.list');
 });
 
