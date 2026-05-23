@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
 
 
 *::before,
@@ -40,6 +45,8 @@ a {
 }
 
 /* Revisar esto para rehacerlo de acuerdo a BEM*/
+
+
 .main {
     width: 100%;
     display: flex;
@@ -98,13 +105,14 @@ a {
     gap: 0.5rem;
 }
 
+
 .header {
-    display: flex;
-    justify-content: space-between;
-    margin: 1.5em auto;
+    margin: .9em;
+    padding: .8em .8em;
+    background-color: var(--dark-blue);
 }
 
-/* Modificadores */
+
 .field__label--alert {
     color: red;
 }
@@ -121,15 +129,16 @@ a {
     border-color: var(--blue);
 }
 
+.list--vertical {
+    margin: .8em;
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 900px) {
     .form--vertical {
         flex-direction: column;
         align-items: center;
-    }
-
-    .list--vertical {
-        width: 75%;
-        flex-direction: column;
     }
 
     .link--vertical {
@@ -193,6 +202,4 @@ a {
 .hidden {
     display: none;
 }
-
-
 

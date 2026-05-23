@@ -1,5 +1,211 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import "tailwindcss";
-@source "../views";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+
+
+
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Montserrat', 'Inter', 'sans-serif';
+}
+
+:root {
+    --dark-blue: #2d6d97;
+    --white: #e1edf6;
+    --blue: #4291c6;
+}
+
+body {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+form {
+    width: 100%;
+}
+
+img {
+    width: 1.5em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Revisar esto para rehacerlo de acuerdo a BEM */
+
+
+.main {
+    width: 100%;
+    display: flex;
+    gap: .5em;
+    
+}
+
+.side__bar {
+    flex: 0.2;
+    
+}
+
+.main__content {
+    flex: 0.8;
+    padding: 1em;
+}
+
+.form {
+    display: flex;
+    gap: 1em;
+    border-color: #2d6d97;
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3em;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+    margin: .5em;
+}
+
+.field__label {
+    font-weight: 400;
+    font-family: 'Inter', 'sans-serif';
+}
+
+.field__input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 0 0 30px;
+}
+
+.submit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.header {
+    margin: .9em;
+    padding: .8em .8em;
+    background-color: var(--dark-blue);
+}
+
+
+.field__label--alert {
+    color: red;
+}
+
+.field__input--alert {
+    border-color: red;
+}
+
+.field__label--confirm {
+    color: var(--blue);
+}
+
+.field__input--alert {
+    border-color: var(--blue);
+}
+
+.list--vertical {
+    margin: .8em;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 900px) {
+
+    .form--vertical {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .link--vertical {
+        flex-direction: column;
+    }
+
+    .field--vertical {
+        flex-direction: column;
+    }
+
+    .room {
+        display: flex;
+        gap: 0.4em;
+        border: 1px solid #ddd;
+        margin: 1em;
+        padding: .5em;
+        border-radius: 8px;
+    }
+
+    .room__info {
+        flex: 0 0 50%;
+        display: flex;
+        flex-direction: column;
+        padding: .5em;
+    }
+
+    .room__info > * {
+        margin-bottom: 0.5em;
+    }
+
+    .room__image {
+        object-fit: cover;
+        flex: 0 0 50%;
+    }
+
+    .room__button {     
+        text-align: center;   
+        padding: 1em;
+        background-color: var(--dark-blue);
+        color: #fff;
+        border-radius: 6px;        
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .room__status {
+        font-weight: 600;
+    }
+
+    .room__status--available {
+        color: green;
+    }
+
+    .room__status--occupied {
+        color: red;
+    }
+
+}
+
+.hidden {
+    display: none;
+}
+
