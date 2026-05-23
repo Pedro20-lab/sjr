@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id('id_parking');
             $table->datetime('ingreso_parking');
             $table->datetime('salida_parking');
+            $table->unsignedBigInteger('hospedaje_id');
             $table->unsignedBigInteger('carro_id');
             $table->unsignedBigInteger('parking_lot_id');
+            $table->foreign('hospedaje_id')->references('id_hospedaje')->on('hospedajes')->onDelete('restrict');
             $table->foreign('carro_id')->references('id_carro')->on('carros')->onDelete('restrict');
             $table->foreign('parking_lot_id')->references('id_parking_lot')->on('parking_lot')->onDelete('restrict');
         });
