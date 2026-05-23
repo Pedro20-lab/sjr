@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-Route::get('test', [ControladorPrueba::class, 'testFunction']);
+Route::view('/test', 'layouts.app')->name('test');
 
 Route::middleware('auth')->group(function() {
     Route::get('/logout', [LoginController::class, 'logout']);
@@ -123,7 +123,7 @@ Route::get('/token', function (Request $request) {
 });
 
 Route::get('/prueba', function () {
-    return view('testview');
+    return view('layouts.app');
 });
 
 

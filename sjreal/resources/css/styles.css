@@ -122,7 +122,6 @@ a {
 }
 
 @media (max-width: 900px) {
-
     .form--vertical {
         flex-direction: column;
         align-items: center;

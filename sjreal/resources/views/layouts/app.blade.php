@@ -13,29 +13,41 @@
     </head>
     <body>
         <header class="header">
-            <nav class="list">
-                <a href="{{route('login')}}" class="link link--vertical">
-                    <img class="link__icon" src="{{ Vite::asset('resources/assets/logo.png')}}" alt="Logo">
-                    <span class="link__text" >San José Real</span>
-                </a>
-
-                <a onclick="toggleMenu()" class="link link--vertical">                    
-                    <span class="material-symbols-outlined link__icon">
-                        person
-                    </span>
-                    <span class="link__text" for="">Opciones</span>
-                </a>
-                <div id="menu" class="side__bar hidden">
-                    @include('layouts.navigation')
-                </div>
-
-            </nav>
+            <a href="{{route('login')}}" class="link link--vertical">
+                <img class="link__icon" src="{{ Vite::asset('resources/assets/logo.png')}}" alt="Logo">
+                <strong class="link__text">Hotel San José Real</strong>
+            </a>
         </header>
 
-        <div class="main">        
-            <!-- Page Content -->
+             
+        <nav class="list--vertical">
+            <a href="" class="link">
+                <span class="material-symbols-outlined">description</span>
+                <label>Reservas</label>
+            </a>
+            <a href="" class="link">
+                <span class="material-symbols-outlined">
+                    inventory
+                </span>
+                <label>Inventario</label>
+            </a>
+            <a href="" class="link">
+                <span class="material-symbols-outlined">
+                    directions_car
+                </span>
+                <label for="">Parqueadero</label>
+            </a>
+            <a href="" class="link">
+                <span class="material-symbols-outlined">
+                    directions_car
+                </span>
+                <label for="">Pagos</label>
+            </a>
+        </nav>
+    
+        <div class="main">                    
             <main class="main__content">
-                @yield('content', 'El contenido debe ir aquí')
+                @yield('content', 'Bienvenido al sistema de gestión del Hotel San José Real')
             </main>
         </div>
     </body>
