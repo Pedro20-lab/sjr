@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {   
+        
+
         User::factory(5)->create();
         Empleado::factory(5)->create();
 
@@ -133,6 +136,34 @@ class DatabaseSeeder extends Seeder
             ['pago_id' => 14, 'hospedaje_id' => 14],
             ['pago_id' => 15, 'hospedaje_id' => 15],
         ))->create();
+        
+        DB::table('carros')->insert([
+            'placa_carro' => 'ABC123',
+            'descripcion' => 'Carro de prueba'
+        ]);
 
+        DB::table('parking_lot')->insert([
+            'nombre_parking_lot' => 'A1',
+        ]);
+
+        DB::table('parking_lot')->insert([
+            'nombre_parking_lot' => 'A2',
+        ]);
+
+        DB::table('parking_lot')->insert([
+            'nombre_parking_lot' => 'B1',
+        ]);
+
+        DB::table('parking_lot')->insert([
+            'nombre_parking_lot' => 'B2',
+        ]);
+
+        DB::table('parking')->insert([
+            'ingreso_parking' => '2026-04-23 03:35:19',
+            'salida_parking' => '2026-04-29 06:27:50',
+            'hospedaje_id' =>  1,
+            'carro_id' => 1, 
+            'parking_lot_id' => 1
+        ]);
     }
 }
